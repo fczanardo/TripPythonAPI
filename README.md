@@ -18,6 +18,7 @@ Flask API that generates a travel plan using Groq (via LangChain), based on [pro
 
 - Python
 - Flask
+- flask-cors
 - langchain-groq
 - python-dotenv
 
@@ -28,6 +29,8 @@ Flask API that generates a travel plan using Groq (via LangChain), based on [pro
 3. Calls Groq LLM (`llama-3.1-8b-instant`) to generate the plan.
 4. Injects the model output into [template.html](template.html).
 5. Returns the rendered HTML in the root route.
+
+For the JSON route, input comes from the HTTP request body and output is returned as JSON.
 
 ## LLM Details And Rationale
 
@@ -78,6 +81,8 @@ pip install -r requirements.txt
 pip install langchain-groq python-dotenv
 ```
 
+Current [requirements.txt](requirements.txt) includes `Flask` and `flask-cors`.
+
 ## Environment Variables
 
 Create [.env](.env) in the project root:
@@ -101,7 +106,18 @@ App URL:
 | Method | Route | Description |
 |--------|-------|-------------|
 | GET / POST | `/` | Generates and returns the travel plan as HTML |
+| GET / POST | `/json` | Generates and returns the travel plan as JSON |
 | GET | `/health` | Health check endpoint |
+
+### JSON Route Input
+
+The `/json` route expects a JSON payload in the request body.
+
+```bash
+curl -X POST http://localhost:5000/json \
+   -H "Content-Type: application/json" \
+   -d @trip.json
+```
 
 ## Troubleshooting
 
@@ -109,6 +125,8 @@ App URL:
    Ensure [.env](.env) exists and includes `GROQ_API_KEY`.
 - `FileNotFoundError` for input files:
    Ensure [prompt.txt](prompt.txt), [trip.json](trip.json), and [template.html](template.html) are in the project root.
+- Empty or invalid output on `/json`:
+   Ensure the request body contains valid JSON and that `Content-Type` is `application/json`.
 - Python 3.14 warning from dependencies:
    Use Python 3.13 or lower until all libraries in your stack fully support 3.14.
 
