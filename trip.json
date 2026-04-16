@@ -1,0 +1,55 @@
+{
+  "destination": {
+    "country": "USA",
+    "cities": ["Las Vegas", "Grand Canyon Village", "Page", "Springdale (Zion)"],
+    "trip_type": "road_trip"
+  },
+  "duration": {
+    "days": 7,
+    "departure_date": "2026-08-22",
+    "return_date": "2026-08-28"
+  },
+  "travelers": {
+    "adults": 3,
+    "children": 0,
+    "adult_ages": [29, 35, 37],
+    "children_ages": []
+  },
+  "budget": {
+    "currency": "USD",
+    "value_per_person": 3500,
+    "style": "comfort"
+  },
+  "preferences": {
+    "main_interests": [
+      "national_parks",
+      "easy_hikes",
+      "viewpoints",
+      "photography",
+      "small_towns"
+    ],
+    "avoid": [
+      "long_museums",
+      "shopping"
+    ],
+    "pace": {
+      "level": "intense",
+      "activities_per_day": "5-7"
+    }
+  },
+  "transport": {
+    "type": "car_rental",
+    "preferences": {
+      "drive_at_night": false,
+      "max_driving_hours_per_day": 4
+    }
+  },
+  "flights": {
+    "arrival": {
+      "estimated_time": "09:10"
+    },
+    "departure": {
+      "estimated_time": "23:55"
+    }
+  }
+}
